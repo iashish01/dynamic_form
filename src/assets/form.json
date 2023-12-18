@@ -1,0 +1,74 @@
+{
+  "fields": [
+    {
+      "label": "Firstname",
+      "type": "text",
+      "name":"firstName",
+      "palceholder":"Enter first Name"
+    },
+    {
+      "label": "Lastname",
+      "type": "text",
+      "name":"lastName",
+      "palceholder":"Enter last Name"
+    },
+    {
+      "label": "Email",
+      "type": "email",
+      "name":"email",
+      "palceholder":"Enter User Email"
+    },
+    {
+      "label": "Age",
+      "type": "number",
+      "name":"age"
+    },
+    {
+      "label": "Gender",
+      "name":"gender",
+      "type": "radio",
+      "options": [
+        {
+          "value": "female",
+          "viewValue": "Female"
+        },
+        {
+          "value": "male",
+          "viewValue": "Male"
+        }
+      ]
+    },
+    {
+      "label": "Country",
+      "name":"country",
+      "type": "select",
+      "options": [
+        {
+          "value": "norway",
+          "viewValue": "Norway"
+        },
+        {
+          "value": "sweden",
+          "viewValue": "Sweden"
+        },
+        {
+          "value": "denmark",
+          "viewValue": "Denmark"
+        },
+        {
+          "value": "finland",
+          "viewValue": "Finland"
+        }
+      ]
+    },
+    {
+      "label": "Date of birth",
+      "type": "datepicker",
+      "name":"dob"
+    },
+    {
+      "label": "Agree to terms and conditions",
+      "type": "checkbox"
+    }
+  ]
+}

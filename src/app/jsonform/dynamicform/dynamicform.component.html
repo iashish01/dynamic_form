@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="heading">
+        <h4>{{heading}}</h4>
+    </div>
+    <hr>
+    <div class="dynamic_form bg-info p-2 mt-3 rounded">
+        <div class="text-center">
+            <h4 class="fw-bolder">{{title}}</h4>
+        </div>
+        <hr>
+        <div class="mt-4">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div *ngFor="let formField of formFields" class="form-group">
+                    <label> {{ formField.fieldName }}</label>
+                    <input class="form-control" 
+                               type="{{ formField.fieldType }}" 
+                               value="" 
+                              [required]="formField.required"
+                              formControlName="{{ formField.fieldName }}" />
+                    <br>
+                </div>
+                <div class="button text-right">
+                    <button type="submit" class="btn btn-danger" [disabled]="this.form.invalid">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

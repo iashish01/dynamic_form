@@ -1,0 +1,11 @@
+<div class="container">
+    <!-- <app-form-fields [formFields]="jsonData.fields"></app-form-fields> -->
+    <form class="bg-info p-5" (ngSubmit)="onSubmit()">
+        <div>
+            <app-form-fields [formFields]="jsonData.fields" [formGroup]="form"></app-form-fields>
+        </div>
+        <div class="button text-right">
+            <button type="submit" class="btn btn-success btn-sm mt-3">Submit</button>
+        </div>
+    </form>
+</div>
