@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormRenderComponent } from '../form-render/form-render.component';
 import {HttpClient } from '@angular/common/http'
-import { FormArray, FormControl,FormGroup,FormGroupDirective,ReactiveFormsModule,ValidatorFn, Validators} from '@angular/forms';
+import { FormArray, FormBuilder, FormControl,FormGroup,FormGroupDirective,ReactiveFormsModule,ValidatorFn, Validators} from '@angular/forms';
 import { FormField } from 'src/app/jsonform/form-field';
 import { CheckboxComponent } from '../../component/checkbox/checkbox.component';
 import { DateComponent } from '../../component/date/date.component';
@@ -14,6 +14,7 @@ import { RangeComponent } from '../../component/range/range.component';
 import { ResetComponent } from '../../component/reset/reset.component';
 import { TextComponent } from '../../component/text/text.component';
 import { Observable } from 'rxjs';
+import { JsonformService } from '../../service/jsonform.service';
 
 @Component({
   selector: 'app-form-fields',
@@ -23,24 +24,21 @@ import { Observable } from 'rxjs';
 export class FormFieldsComponent implements OnInit {
 
   @Input() formFields: any;
+
+  @Input() formGroup!:FormGroup
+
+  @ViewChild(TextComponent) textComponent!: TextComponent;
+
   formField: string[] = [];
 
-  constructor() { }
+
+  constructor(private formBuilder:FormBuilder,public form:JsonformService) { }
 
   ngOnInit(): void {
     console.log("form Render Successfully",this.formFields);
-    // if (this.formFields && this.isObservable(this.formFields.get)) {
-    //   console.log("Form field is outside rendered:");
-    //   this.formFields.get.subscribe((fields: string[]) => {
-    //     this.formField = fields;
-    //     console.log("Form field is rendered:", this.formField);
-    //   });
-    // } else {
-    //   console.error('Invalid formFields or get property is not an Observable.');
-    // }
+    this.textComponent.dataToParent.subscribe((data)=>{
+      console.log("text component is rendered:-",data);
+    })
   }
-  
-  // private isObservable(obj: any): obj is Observable<any> {
-  //   return obj instanceof Observable;
-  // }
+ 
 }

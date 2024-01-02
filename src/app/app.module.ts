@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule,FormGroupName } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { DynamicformComponent } from './jsonform/dynamicform/dynamicform.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,17 +23,17 @@ import { TextComponent } from './form-module/component/text/text.component';
   declarations: [
     AppComponent,
     DynamicformComponent,
-    FormRenderComponent,
     FormFieldsComponent,
+    FormRenderComponent,
     CheckboxComponent,
     DateComponent,
-    EmailComponent,
     FileComponent,
     HiddenComponent,
     PasswordComponent,
     RadioComponent,
     RangeComponent,
     ResetComponent,
+    EmailComponent,
     TextComponent
   ],
   imports: [

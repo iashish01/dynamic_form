@@ -12,12 +12,10 @@ import { TextComponent } from './component/text/text.component';
 import { DateComponent } from './component/date/date.component';
 import { FormRenderComponent } from './render/form-render/form-render.component';
 import { FormFieldsComponent } from './render/form-fields/form-fields.component';
-
-
+import { FormGroupName, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    EmailComponent,
     CheckboxComponent,
     FileComponent,
     HiddenComponent,
@@ -25,16 +23,12 @@ import { FormFieldsComponent } from './render/form-fields/form-fields.component'
     RadioComponent,
     RangeComponent,
     ResetComponent,
-    TextComponent,
-    DateComponent,
-    FormRenderComponent,
-    FormFieldsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports:[
-    EmailComponent,
     CheckboxComponent,
     FileComponent,
     HiddenComponent,
@@ -42,10 +36,7 @@ import { FormFieldsComponent } from './render/form-fields/form-fields.component'
     RadioComponent,
     RangeComponent,
     ResetComponent,
-    TextComponent,
-    DateComponent,
-    FormRenderComponent,
-    FormFieldsComponent
+    FormGroupName
   ]
 })
 export class FormModuleModule { }

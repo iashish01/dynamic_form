@@ -1,4 +1,5 @@
-<div class="">
+<div class="" [formGroup]="jsonFormService.createFromJson(formField)">
     <label>{{formField.label}}</label>
-    <input type="text" placeholder="{{formField.palceholder}}" name="{{formField.name}}" id="{{formField.name}}"/>
+    <input type="text" placeholder="{{formField.palceholder}}" id="{{formField.name}}" 
+        (input)="onInputChange($event)" formControlName="{{formField.name}}"/>
 </div>
