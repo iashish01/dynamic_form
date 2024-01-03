@@ -25,7 +25,7 @@ export class FormFieldsComponent implements OnInit {
 
   @Input() formFields: any;
 
-  @Input() formGroup!:FormGroup
+  @Input() formGroup!:FormGroup 
 
   @ViewChild(TextComponent) textComponent!: TextComponent;
 
