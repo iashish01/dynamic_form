@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { JsonformService } from '../../service/jsonform.service'; 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-render.component.css']
 })
 export class FormRenderComponent implements OnInit {
+
+  
 
   // public form!: FormGroup;
   //form=new FormGroup({});
@@ -32,9 +34,7 @@ export class FormRenderComponent implements OnInit {
       this.jsonFormService.getData().subscribe((data)=>{
       this.jsonData=data;
       console.log(this.jsonData,"this is json data");
-
-       this.form = this.jsonFormService.createFromJson(this.jsonData);
-       console.log(this.form,"form group is calling");
+      this.form = this.jsonFormService.createFromJson(this.jsonData);
 
       // for (const formField of this.jsonData.fields) {
       //   console.log("for loop is running");
@@ -43,9 +43,21 @@ export class FormRenderComponent implements OnInit {
    })
   }
 
+  fieldValue: any;
+
+  onDataReceived(data: { key: string, value: any }): void {
+  // You can process the data as needed
+  // console.log("field data:", data.value);
+
+  // Assuming data.value is not an observable, directly assign its value to fieldValue
+  this.fieldValue = data.value;
+
+  // console.log("field value in render component:", this.fieldValue);
+}
+
   onSubmit(): void {
 
-    console.log("submit method is calling",this.form.value,"form data");
+    console.log("submit method is calling",this.fieldValue,"form data");
 
   }
 }

@@ -2,7 +2,7 @@
     <!-- <app-form-fields [formFields]="jsonData.fields"></app-form-fields> -->
     <form [formGroup]="form" class="bg-info p-5" (ngSubmit)="onSubmit()">
         <div  class="form-group">
-            <app-form-fields [formFields]="jsonData.fields"></app-form-fields>
+            <app-form-fields [formFields]="jsonData.fields" (parantData)="onDataReceived($event)"></app-form-fields>
         </div>
         <div class="button">
             <button class="btn btn-success btn-sm mt-3">Submit</button>

@@ -37,7 +37,7 @@ export class JsonformService {
     console.log("create form json",formGroup.value);
     return formGroup;
   }
-
+  
   private getValidators(field:any){
     const validators=[];
     if (field.required) {

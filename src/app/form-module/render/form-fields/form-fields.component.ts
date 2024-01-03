@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter,Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormRenderComponent } from '../form-render/form-render.component';
 import {HttpClient } from '@angular/common/http'
 import { FormArray, FormBuilder, FormControl,FormGroup,FormGroupDirective,ReactiveFormsModule,ValidatorFn, Validators} from '@angular/forms';
@@ -25,20 +25,31 @@ export class FormFieldsComponent implements OnInit {
 
   @Input() formFields: any;
 
-  @Input() formGroup!:FormGroup 
+  @Output () parantData = new EventEmitter<{ key: string, value: any }>();
+
+  @Input() formGroup! :FormGroup 
 
   @ViewChild(TextComponent) textComponent!: TextComponent;
 
   formField: string[] = [];
 
+  private emittedData: { key: string, value: any }[] = [];
 
   constructor(private formBuilder:FormBuilder,public form:JsonformService) { }
 
   ngOnInit(): void {
-    console.log("form Render Successfully",this.formFields);
-    this.textComponent.dataToParent.subscribe((data)=>{
-      console.log("text component is rendered:-",data);
-    })
+    // console.log("form Render Successfully",this.formFields);
+    // this.textComponent.dataToParent.subscribe((data)=>{
+    //   console.log("text component is rendered:-",data);
+    // })
+  }
+  receivedData: any;
+  onDataReceived(data: { key: string, value: any }): void {
+    // You can process the data as needed
+    this.emittedData.push(data);
+    const fieldValue: string = "fieldValue";
+    this.parantData.emit({ key: fieldValue, value: this.emittedData });
+    // console.log(this.emittedData,"form Field array");
   }
  
 }

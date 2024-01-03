@@ -1,4 +1,10 @@
-<div class="">
+<!-- <div class="">
     <label>Date</label>
     <input type="datetime-local" placeholder="{{formField.palceholder}}" name="{{formField.name}}" id="{{formField.name}}"/>
+</div> -->
+
+<div class="" >
+    <label>{{formField.label}}</label>
+    <input type="datetime-local" placeholder="{{formField.palceholder}}" (input)="onInputChange($event)"
+        id="{{formField.name}}" />
 </div>

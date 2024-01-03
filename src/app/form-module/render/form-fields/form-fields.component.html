@@ -22,11 +22,11 @@
 <div *ngFor="let formField of formFields" class="form-group">
     <div [ngSwitch]="formField.type" class="mt-3">
         <ng-container *ngSwitchCase="'text'">
-            <app-text [formField]="formField"></app-text>
+            <app-text [formField]="formField" (dataToParent)="onDataReceived($event)"></app-text>
         </ng-container>
         
         <ng-container *ngSwitchCase="'email'">
-            <app-email [formField]="formField"></app-email>
+            <app-email [formField]="formField" (dataToParent)="onDataReceived($event)"></app-email>
         </ng-container>
         
         <ng-container *ngSwitchCase="'password'">
@@ -34,7 +34,7 @@
         </ng-container>
 
         <ng-container *ngSwitchCase="'datepicker'">
-            <app-date [formField]="formField"></app-date>
+            <app-date [formField]="formField" (dataToParent)="onDataReceived($event)"></app-date>
         </ng-container>
     </div>
 </div>
