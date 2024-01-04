@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 })
 export class FormRenderComponent implements OnInit {
 
-  
-
   // public form!: FormGroup;
   //form=new FormGroup({});
 
@@ -52,10 +50,19 @@ export class FormRenderComponent implements OnInit {
   // Assuming data.value is not an observable, directly assign its value to fieldValue
   this.fieldValue = data.value;
 
+
   // console.log("field value in render component:", this.fieldValue);
 }
 
   onSubmit(): void {
+
+    // for(const value in this.fieldValue.size){
+    //   if (this.fieldValue.hasOwnProperty(value)) {
+    //     const fieldValue = this.fieldValue[value];
+    //     console.log("Field Name:", value, "Field Value:", fieldValue);
+    //     // Do something with fieldName and fieldValue
+    //   }
+    // }
 
     console.log("submit method is calling",this.fieldValue,"form data");
 

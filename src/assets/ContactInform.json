@@ -1,0 +1,156 @@
+{
+    "userForm": {
+        "id": "userForm",
+        "parentId": "userFormContainer",
+        "title": "New User Form",
+        "subtitle": "User Registration",
+        "namespace": "",
+        "enctype": "multipart/form-data",
+        "fields": [
+            {
+                "type": "hidden",
+                "name": "id",
+                "id": true,
+                "required": true
+            },
+            {
+                "type": "email",
+                "name": "email",
+                "label": "Email",
+                "required": true,
+                "placeHolder": "Email"
+            },
+            {
+                "type": "text",
+                "name": "first_name",
+                "label": "First Name",
+                "view": "folder",
+                "required": true,
+                "placeHolder": "First Name"
+            },
+            {
+                "type": "text",
+                "name": "last_name",
+                "label": "Last Name",
+                "required": true,
+                "placeHolder": "Last Name"
+            },
+            {
+                "type": "file",
+                "name": "avatar",
+                "label": "Avatar",
+                "view": "filelink",
+                "required": true,
+                "placeHolder": "Avatar"
+            }
+        ],
+        "actions": [
+            {
+                "name": "save",
+                "type": "submit",
+                "label": "Save",
+                "applyTo": "form",
+                "handler": {
+                    "script": "submitForm(event)"
+                },
+                "redirects": {
+                    "success": {
+                        "href": "user-list.jsp"
+                    },
+                    "failure": {
+                        "script": "console.log"
+                    }
+                },
+                "class": "btn-primary"
+            },
+            {
+                "name": "cancel",
+                "type": "button",
+                "label": "Cancel",
+                "applyTo": "form",
+                "class": "btn-secondary"
+            },
+            {
+                "name": "add",
+                "type": "button",
+                "label": "Add",
+                "applyTo": "list",
+                "class": "btn-danger",
+                "handler": {
+                    "dialog": "user-form.jsp"
+                }
+            },
+            {
+                "name": "edit",
+                "type": "link",
+                "label": "<i class='fa fa-pencil' aria-hidden='true'></i>",
+                "applyTo": "row",
+                "class": "text-primary  me-2",
+                "handler": {
+                    "dialog": "user-form.jsp?id={id}"
+                }
+            },
+            {
+                "name": "delete",
+                "type": "link",
+                "label": "<i class='fa fa-trash-o' aria-hidden='true'></i>",
+                "applyTo": "row",
+                "class": "text-danger  me-2",
+                "handler": {
+                    "script": "delete(event)"
+                }
+            },
+            {
+                "name": "approve",
+                "type": "link",
+                "label": "<i class='fa fa-check' aria-hidden='true'></i>",
+                "applyTo": "row",
+                "class": "text-success me-2",
+                "handler": {
+                    "script": "delete(event)"
+                }
+            },
+            {
+                "name": "reject",
+                "type": "link",
+                "label": "<i class='fa fa-thumbs-o-down' aria-hidden='true'></i>",
+                "applyTo": "row",
+                "class": "text-warning me-2",
+                "handler": {
+                    "script": "delete(event)"
+                }
+            }
+        ],
+        "providers": {
+            "collection": {
+                "ajax": "https://reqres.in/api/users",
+                "method": "get",
+                "dataNode": "data"
+            },
+            "selector": {
+                "ajax": "https://reqres.in/api/users/{id}",
+                "method": "get",
+                "pathParams": {
+                    "id": "#id"
+                },
+                "queryParams": {},
+                "dataNode": "data"
+            },
+            "create": {
+                "ajax": "https://mocki.io/v1/d4867d8b-b5d5-4a48-a4ab-79131b5809b8",
+                "method": "post",
+                "pathParams": {},
+                "queryParams": {},
+                "requestParams": {}
+            },
+            "update": {
+                "ajax": "https://mocki.io/v1/d4867d8b-b5d5-4a48-a4ab-79131b5809b8",
+                "method": "post"
+            },
+            "delete": {
+                "ajax": "https://mocki.io/v1/d4867d8b-b5d5-4a48-a4ab-79131b5809b8",
+                "method": "post"
+            }
+        }
+    }
+}

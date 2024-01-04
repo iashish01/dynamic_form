@@ -38,7 +38,7 @@ export class FormFieldsComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,public form:JsonformService) { }
 
   ngOnInit(): void {
-    // console.log("form Render Successfully",this.formFields);
+    //console.log("form Render Successfully",this.formFields);
     // this.textComponent.dataToParent.subscribe((data)=>{
     //   console.log("text component is rendered:-",data);
     // })

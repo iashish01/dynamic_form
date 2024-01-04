@@ -17,6 +17,7 @@ export class TextComponent implements OnInit {
   constructor(public jsonFormService:JsonformService) { }
 
   ngOnInit(): void {
+    console.log("text field is rendering:-",this.formField);
   }
 
   onInputChange(event: any): void {
