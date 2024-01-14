@@ -1,18 +1,17 @@
-<div>
-    <!-- <app-form-fields [formFields]="jsonData.fields"></app-form-fields> -->
-    <form class="p-1" (ngSubmit)="onSubmit()" id="{{jsonData.userForm.id}}" name="{{jsonData.userForm.title}}">
+<div *ngIf="form">
+    <!-- {{jsonData|json}} -->
+    <form class="p-1" [formGroup]="form" (ngSubmit)="onSubmit()" name={{jsonData.title}}>
         <div>
-            <h1 class="text-center">{{jsonData.userForm.title}}</h1>
-            <hr />
-            <p class="font-weight-bold">{{jsonData.userForm.subtitle}}</p>
+            <h1 class="text-center">{{jsonData.title}}</h1>
+            <hr/>
+            <p class="font-weight-bold">{{jsonData.subtitle}}</p>
         </div>
         <div class="form-group m-4">
-            <app-form-fields [formFields]="jsonData.userForm.fields"
-                (parantData)="onDataReceived($event)"></app-form-fields>
+            <app-form-fields [formFields]="jsonData.fields" [form]="form" (parantData)="onDataReceived($event)" formGroupName="form"></app-form-fields>
         </div>
         <div class="button">
-            <button type="button" class="btn btn-secondary btn-sm mt-3 ml-2">Cancel</button>
-            <button class="btn btn-success btn-sm mt-3">Submit</button>
+            <button type="button" class="btn btn-secondary btn-sm m-3" (click)="onCancel()">Cancel</button>
+            <button class="btn btn-success btn-sm">Submit</button>
         </div>
     </form>
 </div>

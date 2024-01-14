@@ -6,3 +6,11 @@ hr{
     border:1px solid black !important;
     color:black;
 }
+form .button{
+    align-self: flex-end;
+    text-align:right;
+    margin-right: 50px;
+}
+.font-weight-bold{
+    font-weight: bold;
+}

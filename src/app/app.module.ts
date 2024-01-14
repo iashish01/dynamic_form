@@ -18,6 +18,7 @@ import { RadioComponent } from './form-module/component/radio/radio.component';
 import { RangeComponent } from './form-module/component/range/range.component';
 import { ResetComponent } from './form-module/component/reset/reset.component';
 import { TextComponent } from './form-module/component/text/text.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TextComponent } from './form-module/component/text/text.component';
     RangeComponent,
     ResetComponent,
     EmailComponent,
-    TextComponent
+    TextComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

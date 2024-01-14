@@ -1,5 +1,10 @@
 <div>
-    <label>{{formField.label}}</label>
-    <input type="text" placeholder="{{formField.placeHolder}}" id="{{formField.name}}" 
-        (input)="onInputChange($event)"/>
+    <label class="ml-4 font-weight-bold">{{formField.label}}</label>
+    <input type="text" placeholder="{{formField.placeHolder}}" id="{{formField.name}}" class="{{formField.class}}"
+    (change)="onInputChange($event)" [formControlName]="formField.name"/>
 </div>
+
+<!-- <input type="text" placeholder="{{formField.placeHolder}}" id="{{formField.name}}"  
+        (change)="onInputChange($event)" class="{{formField.class}}"
+        [formControlName]="formField.name"
+        /> -->

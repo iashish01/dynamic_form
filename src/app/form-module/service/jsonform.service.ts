@@ -23,30 +23,30 @@ export class JsonformService {
   }
   
   getData(): Observable<any> {
-    console.log("jsons service is calling");
     // return this.http.get(this.url);
     return this.http.get(this.contact_info);
   }
 
   createFromJson(jsonData: any): FormGroup {
     const formGroup = new FormGroup({});
-    console.log("jsonData:-",jsonData);
-    console.log("jsons service createFormJson is calling");
+    // console.log("jsonData:-",jsonData);
+    // console.log("jsons service createFormJson is calling");
     if (jsonData.fields) {
       jsonData.fields.forEach((field: any) => {
+        // console.log("field is here:-",field);
         formGroup.addControl(field.name, new FormControl(field.value || '', this.getValidators(field)));
-        console.log("inside the conditions");
+        // console.log("inside the conditions");
       });
     }
-    console.log("create form json",formGroup.value);
+    // console.log("create form json",formGroup.value);
     return formGroup;
   }
 
   private getValidators(field:any){
-    console.log(field,"field value is here");
+    // console.log(field,"field value is here");
     const validators=[];
     if (field.required) {
-      console.log("jsons service condition is calling");
+      // console.log("jsons service condition is calling");
       validators.push(Validators.required);
     }
     return validators;

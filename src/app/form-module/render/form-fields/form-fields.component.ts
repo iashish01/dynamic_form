@@ -27,7 +27,7 @@ export class FormFieldsComponent implements OnInit {
 
   @Output () parantData = new EventEmitter<{ key: string, value: any }>();
 
-  @Input() formGroup! :FormGroup 
+  @Input() form! :FormGroup;
 
   @ViewChild(TextComponent) textComponent!: TextComponent;
 
@@ -35,21 +35,29 @@ export class FormFieldsComponent implements OnInit {
 
   private emittedData: { key: string, value: any }[] = [];
 
-  constructor(private formBuilder:FormBuilder,public form:JsonformService) { }
+  constructor(private formBuilder:FormBuilder,public jsonformService:JsonformService) { }
 
   ngOnInit(): void {
     //console.log("form Render Successfully",this.formFields);
     // this.textComponent.dataToParent.subscribe((data)=>{
     //   console.log("text component is rendered:-",data);
     // })
+    console.log("55555555555555555555555:-",this.form.value);
+    //console.log("Form Fields is here:-",this.formFields);
   }
   receivedData: any;
+  
   onDataReceived(data: { key: string, value: any }): void {
-    // You can process the data as needed
-    this.emittedData.push(data);
+
+    const index = this.emittedData.findIndex(item => item.key === data.key);
+
+    if (index !== -1) {
+      this.emittedData[index] = data;
+    } else {
+      this.emittedData.push(data);
+    }
     const fieldValue: string = "fieldValue";
     this.parantData.emit({ key: fieldValue, value: this.emittedData });
-    // console.log(this.emittedData,"form Field array");
   }
- 
+
 }

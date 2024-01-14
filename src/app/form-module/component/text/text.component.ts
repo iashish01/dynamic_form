@@ -11,23 +11,26 @@ export class TextComponent implements OnInit {
 
   @Output() dataToParent = new EventEmitter<{ key: string, value: any }>();
 
-  @Input() control!:FormControl
   @Input() formField: any;
 
-  constructor(public jsonFormService:JsonformService) { }
+  @Input() form!:FormGroup;
+
+  fieldName!:string;
+
+  constructor() { }
 
   ngOnInit(): void {
-    console.log("text field is rendering:-",this.formField);
+    console.log("11111111111111111111111:-",this.form);
+    // console.log("text field is rendering:-",this.formField);
+    this.fieldName=this.formField.name;
+    //console.log(this.formField,"=============================");
   }
 
   onInputChange(event: any): void {
     const inputValue = event.target.value;
-    //console.log("data of text field:-",inputValue);
-    // Create a JSON object with the data
-    // const jsonData = { inputValue: inputValue };
     const jsonData = { key: this.formField.name, value: inputValue };
-    // console.log(jsonData);
     this.dataToParent.emit(jsonData);
+    this.form.controls[this.formField.name].setValue(inputValue);
   }
 
 }
